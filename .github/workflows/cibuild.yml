@@ -14,10 +14,6 @@ jobs:
        
 
     steps:
-    - name: Build
-      run: dotnet build --no-restore  --configuration ${{ env.configuration }}
-    - name: Test
-      run: dotnet test --no-build --verbosity normal --configuration ${{ env.configuration }}
 # checkout all sources from git
     - name: Checkout Sources
       uses: actions/checkout@v4
@@ -35,6 +31,11 @@ jobs:
     # run tests
     - name: Test
       run: dotnet test --no-build --verbosity normal
+
+    - name: Build
+      run: dotnet build --no-restore  --configuration ${{ env.configuration }}
+    - name: Test
+      run: dotnet test --no-build --verbosity normal --configuration ${{ env.configuration }}
       
 
 
